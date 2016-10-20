@@ -1,0 +1,13 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "sqlite": "../data/coffeeAPI.sqlite",
+  "public": "../public/",
+  "auth": {
+    "idField": "id",
+    "token": {
+      "secret": "fl5u61wV8uxmepE3rv5SbeMuOk3mc9RfuWLt4T1G4+K3PyQxLjbLQ7shv6y/gl2+rt8QZtHUoZeNUJyDkus6QQ=="
+    },
+    "local": {}
+  }
+}
