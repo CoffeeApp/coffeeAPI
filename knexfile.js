@@ -39,10 +39,8 @@ module.exports = {
   },
 
   production: {
-    client: 'sqlite3',
-    connection: {
-      filename: PATHS.production
-    },
+    client: 'pg',
+    connection: process.env.DATABASE_URL,
     pool: {
       min: 2,
       max: 10
@@ -50,8 +48,7 @@ module.exports = {
     migrations: {
       directory: PATHS.migrations,
       tableName: 'knex_migrations'
-    },
-    useNullAsDefault: true
+    }
   }
 
 };
