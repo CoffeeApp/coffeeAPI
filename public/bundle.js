@@ -63,6 +63,7 @@
 	    coffeeService.find().then(function (coffeeData) {
 	      return _this.setState({ coffees: coffeeData.data });
 	    });
+
 	    coffeeService.on('created', function (coffee) {
 	      return _this.setState({
 	        coffees: _this.state.coffees.concat(coffee)
