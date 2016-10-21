@@ -48,6 +48,7 @@ module.exports = {
       max: 10
     },
     migrations: {
+      directory: PATHS.migrations,
       tableName: 'knex_migrations'
     },
     useNullAsDefault: true
