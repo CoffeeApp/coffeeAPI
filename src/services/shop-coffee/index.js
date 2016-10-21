@@ -1,3 +1,5 @@
+'use strict';
+
 const db = require('../../../data')
 const hooks = require('./hooks');
 const Shop = require('../../../data/model/Shop')
