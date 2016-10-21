@@ -1,8 +1,8 @@
 'use strict';
 
+const service = require('feathers-knex');
 const hooks = require('./hooks');
-const Shop = require('../../../data/model/Shop')
-
+const Order = require('../../../data/model/Order')
 class Service {
   constructor(options) {
     this.options = options || {};
@@ -10,7 +10,10 @@ class Service {
 
   find(params) {
     console.log("THIS IS PARAMS", params)
-    return Shop.where('id', 1).fetch({withRelated: ['coffees']})
+    Order.where('id', 2).fetch({withRelated: ['orderDetails', 'shop']}).then(s => {
+      console.log(s);
+    })
+    return Order.where('id', 2).fetch({withRelated: ['orderDetails', 'shop']})
     // db('shop').select().then(shops => {
     //   log
     // })
@@ -43,30 +46,18 @@ class Service {
   //   return Promise.resolve({ id });
   // }
 }
-
 module.exports = function(){
   const app = this;
 
   // Initialize our service with any options it requires
-  app.use('/shop-coffees', new Service());
+  app.use('/orders', new Service());
 
   // Get our initialize service to that we can bind hooks
-  const findJobsByTermervice = app.service('/shop-coffees');
+  const orderService = app.service('/orders');
 
   // Set up our before hooks
-  findJobsByTermervice.before(hooks.before);
+  orderService.before(hooks.before);
 
   // Set up our after hooks
-  findJobsByTermervice.after(hooks.after);
+  orderService.after(hooks.after);
 };
-
-module.exports.Service = Service;
-
-//
-// where: (query, callback) => {
-//   db('jobs')
-//   .join('terms', 'jobs.url', '=', 'terms.job_url')
-//   .select()
-//   .where(query)
-//   .asCallback(callback)
-// },

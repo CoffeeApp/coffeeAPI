@@ -1,5 +1,4 @@
-var knex = require('../index')
-var bookshelf = require('bookshelf')(knex);
+var bookshelf = require('../bookshelf')
 var Coffee = require('./Coffee')
 
 var Shop = bookshelf.Model.extend({
