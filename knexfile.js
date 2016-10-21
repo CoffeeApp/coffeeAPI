@@ -19,6 +19,9 @@ module.exports = {
       directory: PATHS.migrations,
       tableName: 'knex_migrations'
     },
+    seeds: {
+      directory: PATHS.seeds
+    },
     useNullAsDefault: true
   },
 
