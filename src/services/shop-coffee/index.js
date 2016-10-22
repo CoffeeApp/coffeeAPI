@@ -2,6 +2,7 @@
 
 const hooks = require('./hooks');
 const Shop = require('../../../data/model/Shop')
+const Coffee = require('../../../data/model/Coffee')
 
 class Service {
   constructor(options) {

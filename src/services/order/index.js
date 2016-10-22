@@ -10,10 +10,7 @@ class Service {
 
   find(params) {
     console.log("THIS IS PARAMS", params)
-    Order.where('id', 2).fetch({withRelated: ['orderDetails', 'shop']}).then(s => {
-      console.log(s);
-    })
-    return Order.where('id', 2).fetch({withRelated: ['orderDetails', 'shop']})
+    return Order.where('id', 1).fetch({withRelated: ['shop']})
     // db('shop').select().then(shops => {
     //   log
     // })

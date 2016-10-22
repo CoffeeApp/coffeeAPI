@@ -5,7 +5,6 @@ exports.up = function(knex, Promise) {
     table.string('name')
     table.string('phone')
     table.string('status')
-    table.integer('shop_id')
     table.string('comment')
     table.date('new_date')
     table.date('submit_date')
