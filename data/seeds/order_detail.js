@@ -25,6 +25,27 @@ exports.seed = function(knex, Promise) {
           quantity:33,
           milk:4,
           sugar:3
+        }),
+        knex('order_detail').insert({
+          order_id: 2,
+          coffee_id: 4,
+          quantity:2,
+          milk:4,
+          sugar:3
+        }),
+        knex('order_detail').insert({
+          order_id: 2,
+          coffee_id: 5,
+          quantity:2,
+          milk:4,
+          sugar:3
+        }),
+        knex('order_detail').insert({
+          order_id: 2,
+          coffee_id: 6,
+          quantity:2,
+          milk:4,
+          sugar:3
         })
       ]);
     });
