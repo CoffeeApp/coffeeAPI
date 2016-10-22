@@ -83,7 +83,7 @@ class Service {
           .select('id as shop_id', 'name as shop_name')
           .then(shops => {
             // console.log('shops', shops);
-            var shopWithToalPrimiseArray = shops.map(shop => {
+            var shopWithTotalPrimiseArray = shops.map(shop => {
               return new Promise(function(rsl, rej) {
                 knex('shop_coffee')
                   .whereIn('coffee_id', coffeeIds)
@@ -103,11 +103,11 @@ class Service {
               })
             })
 
-            return Promise.all(shopWithToalPrimiseArray)
+            return Promise.all(shopWithTotalPrimiseArray)
 
-          }).then(shopsWithToal => {
-            console.log('shopsWithToal', shopsWithToal);
-            resolve(shopsWithToal)
+          }).then(shopsWithTotal => {
+            console.log('shopsWithTotal', shopsWithTotal);
+            resolve(shopsWithTotal)
           })
       })
     })
