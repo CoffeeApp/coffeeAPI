@@ -1,4 +1,5 @@
 'use strict';
+const order = require('./order');
 const shop_coffee = require('./shop-coffee')
 const shop = require('./shop');
 const coffee = require('./coffee');
@@ -25,4 +26,5 @@ module.exports = function() {
   app.configure(coffee);
   app.configure(shop);
   app.configure(shop_coffee);
+  app.configure(order);
 };
