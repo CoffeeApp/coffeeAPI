@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
     table.integer('order_id').references('order.id')
     table.integer('coffee_id').references('coffee.id')
     table.integer('quantity')
-    table.integer('milk')
+    table.string('milk')
     table.integer('sugar')
   })
 };

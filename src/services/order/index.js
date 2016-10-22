@@ -12,13 +12,15 @@ class Service {
     console.log("THIS IS PARAMS", params)
     const promise = new Promise(function(resolve, reject) {
       knex('order')
+      .join('shop', 'shop.id', 'order.shop_id')
       .select(
-        'id',
-        'name',
-        'phone',
+        'order.id as order_id',
+        'shop.name as shop_id',
+        'order.name',
+        'order.phone',
         'status',
         'comment',
-        'submit_date'
+        'new_date as ordered'
       )
       .then(orders => {
         if(_.isEmpty(orders)) {
@@ -28,8 +30,8 @@ class Service {
             return new Promise((rsv, rej) => {
               knex('order_detail')
                 .join('coffee', 'order_detail.coffee_id', 'coffee.id')
-                .andWhere('order_detail.order_id', order.id)
-                .select('type', 'quantity', 'milk', 'sugar', 'order_id')
+                .andWhere('order_detail.order_id', order.order_id)
+                .select('type', 'quantity as qty', 'milk', 'sugar')
                 .then(coffees => {
                   order.coffees = coffees
                   rsv(order)
@@ -38,7 +40,6 @@ class Service {
           })
           Promise.all(promiseArray)
             .then((resultOrders) => {
-              console.log(resultOrders);
               resolve(resultOrders)
             })
         }
