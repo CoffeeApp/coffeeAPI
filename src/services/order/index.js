@@ -9,7 +9,6 @@ class Service {
     this.options = options || {};
   }
   find(params) {
-    console.log("THIS IS PARAMS", params)
     const promise = new Promise(function(resolve, reject) {
       knex('order')
       .join('shop', 'shop.id', 'order.shop_id')
@@ -48,75 +47,44 @@ class Service {
     })
     return promise
   }
-  // find(params) {
-  //   console.log("THIS IS PARAMS", params)
-  //   const promise = new Promise(function(resole, reject) {
-  //     knex('order as o')
-  //       .join('order_detail as od')
-  //       .join('coffee as cf')
-  //       .where(knex.raw('o.id = od.order_id and od.coffee_id = cf.id'))
-  //       .select(
-          // 'o.name',
-          // 'o.phone',
-          // 'o.status',
-          // 'o.comment',
-          // 'o.submit_date',
-  //         'cf.type',
-  //         'od.quantity',
-  //         'od.milk',
-  //         'od.sugar'
-  //       ).then(result => {
-  //         if(!result || result.length == 0) {
-  //           resole([])
-  //         } else {
-  //           console.log(result);
-  //           var coffees = result.reduce((prev, curv) => {
-  //             var curOrder = {}
-  //             curOrder.name = curv.name
-  //             curOrder.phone = curv.phone
-  //             curOrder.status = curv.status
-  //             curOrder.comment = curv.comment
-  //             curOrder.submit_date = curv.submit_date
-  //
-  //
-  //             coffee.type = curv.type
-  //             coffee.quantity = curv.quantity
-  //             coffee.milk = curv.milk
-  //             coffee.sugar = curv.sugar
-  //             prev.push(coffee)
-  //             return prev
-  //           }, [])
-  //           var order = {}
-  //
-  //           order.coffees = coffees
-  //         }
-  //         resole(order)
-  //       })
-  //   })
-  //   return promise
-  // }
 
-  // get(id, params) {
-  //   return Promise.resolve({
-  //     id, text: `A new message with ID: ${id}!`
-  //   });
-  // }
-  //
-  // create(data, params) {
-  //   if(Array.isArray(data)) {
-  //     return Promise.all(data.map(current => this.create(current)));
-  //   }
-  //
-  //   return Promise.resolve(data);
-  // }
+  create(data, params) {
+    console.log('data', data);
+
+    var promise = new Promise(function(resolve, reject) {
+      knex('order')
+        .insert(data.details)
+        .then(newOrderId => {
+          var promiseArray = data.coffees.map(coffeeOrder => {
+            coffeeOrder.order_id = newOrderId[0]
+            delete coffeeOrder['type']
+            return knex('order_detail')
+              .insert(coffeeOrder)
+          })
+
+          return Promise.all(promiseArray)
+            .then(batchAdds => {
+              resolve(batchAdds)
+            })
+        })
+    })
+    return promise
+  }
   //
   // update(id, data, params) {
   //   return Promise.resolve(data);
   // }
   //
-  // patch(id, data, params) {
-  //   return Promise.resolve(data);
-  // }
+  patch(id, data, params) {
+    return new Promise(function(resolve, reject) {
+      knex('order')
+        .update(data)
+        .where('id', id)
+        .then((id) => {
+          resolve(`order id ${id} is patched`)
+        })
+    })
+  }
   //
   // remove(id, params) {
   //   return Promise.resolve({ id });
