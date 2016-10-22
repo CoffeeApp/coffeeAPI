@@ -64,11 +64,54 @@ class Service {
 
           return Promise.all(promiseArray)
             .then(batchAdds => {
-              resolve(batchAdds)
+              resolve({
+                newOrderId: newOrderId[0],
+                orderData: data
+              })
             })
         })
     })
-    return promise
+
+    var resultPromise = new Promise(function(resolve, reject) {
+      promise.then(data => {
+        var orderId = data.newOrderId
+        var orderData = data.orderData
+        var coffeeIds = orderData.coffees.map(c => {
+          return c.coffee_id
+        })
+        knex('shop')
+          .select('id as shop_id', 'name as shop_name')
+          .then(shops => {
+            // console.log('shops', shops);
+            var shopWithToalPrimiseArray = shops.map(shop => {
+              return new Promise(function(rsl, rej) {
+                knex('shop_coffee')
+                  .whereIn('coffee_id', coffeeIds)
+                  .andWhere('shop_id', shop.shop_id)
+                  .select()
+                  .then(prices => {
+                    // console.log(`prices of ${shop.shop_name}`, prices);
+                    var total = orderData.coffees.reduce((sumPrice, c) => {
+                      var priceOfCoffee = prices.filter(p => {
+                        return p.coffee_id == c.coffee_id
+                      })[0]['price']
+                      return (sumPrice + (c.quantity * priceOfCoffee))
+                    }, 0)
+                    shop.total = total
+                    rsl(shop)
+                  })
+              })
+            })
+
+            return Promise.all(shopWithToalPrimiseArray)
+
+          }).then(shopsWithToal => {
+            console.log('shopsWithToal', shopsWithToal);
+            resolve(shopsWithToal)
+          })
+      })
+    })
+    return resultPromise
   }
   //
   // update(id, data, params) {
