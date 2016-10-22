@@ -7,9 +7,7 @@ var OrderDetail = bookshelf.Model.extend({
   order: function() {
     return this.belongsTo(Order, 'order_detail');
   },
-  coffee: function() {
-    return this.hasOne(Coffee, 'order_detail');
-  },
+
 });
 
 module.exports = OrderDetail
