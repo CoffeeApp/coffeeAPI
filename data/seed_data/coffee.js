@@ -1,47 +1,4 @@
-var shop_coffees = [
-  {coffee_id: 1, shop_id: 1, price: 1},
-  {coffee_id: 2, shop_id: 1, price: 2},
-  {coffee_id: 3, shop_id: 1, price: 3},
-  {coffee_id: 4, shop_id: 1, price: 3.5},
-  {coffee_id: 5, shop_id: 1, price: 4.5},
-  {coffee_id: 6, shop_id: 1, price: 4},
-  {coffee_id: 7, shop_id: 1, price: 5},
-  {coffee_id: 8, shop_id: 1, price: 6.5},
-  {coffee_id: 1, shop_id: 2, price: 10},
-  {coffee_id: 2, shop_id: 2, price: 20},
-  {coffee_id: 3, shop_id: 2, price: 30},
-  {coffee_id: 4, shop_id: 2, price: 35},
-  {coffee_id: 5, shop_id: 2, price: 45},
-  {coffee_id: 6, shop_id: 2, price: 40},
-  {coffee_id: 7, shop_id: 2, price: 50},
-  {coffee_id: 8, shop_id: 2, price: 65},
-  {coffee_id: 1, shop_id: 3, price: 10},
-  {coffee_id: 2, shop_id: 3, price: 200},
-  {coffee_id: 3, shop_id: 3, price: 300},
-  {coffee_id: 4, shop_id: 3, price: 350},
-  {coffee_id: 5, shop_id: 3, price: 450},
-  {coffee_id: 6, shop_id: 3, price: 400},
-  {coffee_id: 7, shop_id: 3, price: 500},
-  {coffee_id: 8, shop_id: 3, price: 650},
-  {coffee_id: 1, shop_id: 4, price: 4},
-  {coffee_id: 2, shop_id: 4, price: 4},
-  {coffee_id: 3, shop_id: 4, price: 4},
-  {coffee_id: 4, shop_id: 4, price: 4},
-  {coffee_id: 5, shop_id: 4, price: 4},
-  {coffee_id: 6, shop_id: 4, price: 4},
-  {coffee_id: 7, shop_id: 4, price: 4},
-  {coffee_id: 8, shop_id: 4, price: 4},
-  {coffee_id: 1, shop_id: 5, price: 5},
-  {coffee_id: 2, shop_id: 5, price: 5},
-  {coffee_id: 3, shop_id: 5, price: 5},
-  {coffee_id: 4, shop_id: 5, price: 5},
-  {coffee_id: 5, shop_id: 5, price: 5},
-  {coffee_id: 6, shop_id: 5, price: 5},
-  {coffee_id: 7, shop_id: 5, price: 5},
-  {coffee_id: 8, shop_id: 5, price: 5}
-]
-
-var coffees = [
+module.exports = [
         {
             type: 'Short Black',
             image: 'https://s-media-cache-ak0.pinimg.com/564x/99/94/fe/9994fedb8db160d363719f2acb74acb4.jpg',
@@ -73,8 +30,3 @@ var coffees = [
             description: 'Single shot poured over heaped teaspoon of hot chocolate powder and stirred. Top with velvety milk in a cappuccino style.'
         },
     ]
-
-module.exports = {
-  shop_coffees,
-  coffees
-}
