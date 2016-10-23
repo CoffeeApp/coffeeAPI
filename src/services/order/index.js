@@ -80,10 +80,11 @@ class Service {
           return c.coffee_id
         })
         knex('shop')
-          .select('id as shop_id', 'name as shop_name')
+          .select('id as shop_id', 'name as shop_name', 'address',
+          'phone as shop_phone', 'rating', 'lat', 'lng', 'description')
           .then(shops => {
             // console.log('shops', shops);
-            var shopWithTotalPrimiseArray = shops.map(shop => {
+            var shopWithTotalPromiseArray = shops.map(shop => {
               return new Promise(function(rsl, rej) {
                 knex('shop_coffee')
                   .whereIn('coffee_id', coffeeIds)
@@ -98,12 +99,13 @@ class Service {
                       return (sumPrice + (c.quantity * priceOfCoffee))
                     }, 0)
                     shop.total = total
+                    shop.order_id = orderId
                     rsl(shop)
                   })
               })
             })
 
-            return Promise.all(shopWithTotalPrimiseArray)
+            return Promise.all(shopWithTotalPromiseArray)
 
           }).then(shopsWithTotal => {
             console.log('shopsWithTotal', shopsWithTotal);
