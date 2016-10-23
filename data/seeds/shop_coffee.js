@@ -20,7 +20,31 @@ exports.seed = function(knex, Promise) {
         knex('shop_coffee').insert({coffee_id: 5, shop_id: 2, price: 45}),
         knex('shop_coffee').insert({coffee_id: 6, shop_id: 2, price: 40}),
         knex('shop_coffee').insert({coffee_id: 7, shop_id: 2, price: 50}),
-        knex('shop_coffee').insert({coffee_id: 8, shop_id: 2, price: 65})
+        knex('shop_coffee').insert({coffee_id: 8, shop_id: 2, price: 65}),
+        knex('shop_coffee').insert({coffee_id: 1, shop_id: 3, price: 100}),
+        knex('shop_coffee').insert({coffee_id: 2, shop_id: 3, price: 200}),
+        knex('shop_coffee').insert({coffee_id: 3, shop_id: 3, price: 300}),
+        knex('shop_coffee').insert({coffee_id: 4, shop_id: 3, price: 350}),
+        knex('shop_coffee').insert({coffee_id: 5, shop_id: 3, price: 450}),
+        knex('shop_coffee').insert({coffee_id: 6, shop_id: 3, price: 400}),
+        knex('shop_coffee').insert({coffee_id: 7, shop_id: 3, price: 500}),
+        knex('shop_coffee').insert({coffee_id: 8, shop_id: 3, price: 650}),
+        knex('shop_coffee').insert({coffee_id: 1, shop_id: 4, price: 4}),
+        knex('shop_coffee').insert({coffee_id: 2, shop_id: 4, price: 4}),
+        knex('shop_coffee').insert({coffee_id: 3, shop_id: 4, price: 4}),
+        knex('shop_coffee').insert({coffee_id: 4, shop_id: 4, price: 4}),
+        knex('shop_coffee').insert({coffee_id: 5, shop_id: 4, price: 4}),
+        knex('shop_coffee').insert({coffee_id: 6, shop_id: 4, price: 4}),
+        knex('shop_coffee').insert({coffee_id: 7, shop_id: 4, price: 4}),
+        knex('shop_coffee').insert({coffee_id: 8, shop_id: 4, price: 4}),
+        knex('shop_coffee').insert({coffee_id: 1, shop_id: 5, price: 5}),
+        knex('shop_coffee').insert({coffee_id: 2, shop_id: 5, price: 5}),
+        knex('shop_coffee').insert({coffee_id: 3, shop_id: 5, price: 5}),
+        knex('shop_coffee').insert({coffee_id: 4, shop_id: 5, price: 5}),
+        knex('shop_coffee').insert({coffee_id: 5, shop_id: 5, price: 5}),
+        knex('shop_coffee').insert({coffee_id: 6, shop_id: 5, price: 5}),
+        knex('shop_coffee').insert({coffee_id: 7, shop_id: 5, price: 5}),
+        knex('shop_coffee').insert({coffee_id: 8, shop_id: 5, price: 5})
       ]);
     });
 };
