@@ -76,7 +76,7 @@ class Service {
       knex('order')
         .insert(data.details)
         .then(newOrderId => {
-          var promiseArray = data.coffees.map(coffeeOrder => {
+          var promiseArray = data.orderCoffees.map(coffeeOrder => {
             coffeeOrder.order_id = newOrderId[0]
             delete coffeeOrder['type']
             return knex('order_detail')
@@ -97,7 +97,7 @@ class Service {
       promise.then(data => {
         var orderId = data.newOrderId
         var orderData = data.orderData
-        var coffeeIds = orderData.coffees.map(c => {
+        var coffeeIds = orderData.orderCoffees.map(c => {
           return c.coffee_id
         })
         knex('shop')
@@ -113,7 +113,7 @@ class Service {
                   .select()
                   .then(prices => {
                     // console.log(`prices of ${shop.shop_name}`, prices);
-                    var total = orderData.coffees.reduce((sumPrice, c) => {
+                    var total = orderData.orderCoffees.reduce((sumPrice, c) => {
                       var priceOfCoffee = prices.filter(p => {
                         return p.coffee_id == c.coffee_id
                       })[0]['price']
@@ -129,7 +129,6 @@ class Service {
             return Promise.all(shopWithTotalPromiseArray)
 
           }).then(shopsWithTotal => {
-            console.log('shopsWithTotal', shopsWithTotal);
             resolve(shopsWithTotal)
           })
       })
