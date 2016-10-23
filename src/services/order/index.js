@@ -51,7 +51,7 @@ class Service {
               knex('order_detail')
                 .join('coffee', 'order_detail.coffee_id', 'coffee.id')
                 .andWhere('order_detail.order_id', order.order_id)
-                .select('type', 'quantity as qty', 'milk', 'sugar')
+                .select('type', 'quantity as qty', 'milk', 'sugar', 'note')
                 .then(coffees => {
                   order.coffees = coffees
                   rsv(order)
