@@ -11,7 +11,7 @@ class Service {
 
   find(params) {
     console.log("THIS IS PARAMS", params)
-    return Shop.where('id', 1).fetch({withRelated: ['coffees']})
+    return Shop.fetchAll({withRelated: ['coffees']})
     // db('shop').select().then(shops => {
     //   log
     // })
