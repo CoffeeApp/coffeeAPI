@@ -14,6 +14,11 @@ class Service {
       knex('order')
       .join('shop', 'shop.id', 'order.shop_id')
       .where(function() {
+        if(query && query.notIn == 'new') {
+          this.whereNot('order.status', query.notIn)
+        }
+      })
+      .andWhere(function() {
         if(query) {
           if(query.shop_id) {
             if(query.order_id) {
@@ -64,7 +69,7 @@ class Service {
 
   create(data, params) {
     console.log('data', data);
-
+    data.details.new_date = new Date()
     var promise = new Promise(function(resolve, reject) {
       knex('order')
         .insert(data.details)
@@ -139,8 +144,8 @@ class Service {
     return knex('order')
         .update(data)
         .where('id', id)
-        .then((id) => {
-
+        .then((updated) => {
+            console.log('patched: ', id);
             return this.find({query: {order_id: id}})
 
         })
