@@ -39,3 +39,4 @@ jspm_packages
 .editorconfig
 
 data/coffeeAPI.sqlite
+.DS_Store

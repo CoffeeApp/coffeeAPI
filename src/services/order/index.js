@@ -10,6 +10,7 @@ class Service {
   }
   find(params) {
     var query =  params.query;
+    console.log('query: ', query);
     const promise = new Promise(function(resolve, reject) {
       knex('order')
       .join('shop', 'shop.id', 'order.shop_id')
@@ -33,7 +34,8 @@ class Service {
       })
       .select(
         'order.id as order_id',
-        'shop.name as shop_id',
+        'shop.id as shop_id',
+        'shop.name as shop_name',
         'order.name',
         'order.phone',
         'status',
