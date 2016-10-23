@@ -11,12 +11,17 @@ const App = React.createClass({
   },
 
   componentDidMount() {
-    const coffeeService = api.service('dumb-orders');
-    coffeeService.find().then(coffeeData => this.setState({ coffees: coffeeData.data }));
-
-    coffeeService.on('created', coffee => this.setState({
-      coffees: this.state.coffees.concat(coffee)
-    }));
+    const orderService = api.service('orders');
+    // coffeeService.find().then(coffeeData => this.setState({ coffees: coffeeData.data }));
+    //
+    // coffeeService.on('created', coffee => this.setState({
+    //   coffees: this.state.coffees.concat(coffee)
+    // }));
+    orderService.find({
+      query: {order_id: 1}
+    }).then(orders => {
+        console.log(orders);
+      })
   },
 
   render() {

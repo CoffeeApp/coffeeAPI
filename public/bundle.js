@@ -57,17 +57,16 @@
 	    return { coffees: [] };
 	  },
 	  componentDidMount: function componentDidMount() {
-	    var _this = this;
-
-	    var coffeeService = api.service('dumb-orders');
-	    coffeeService.find().then(function (coffeeData) {
-	      return _this.setState({ coffees: coffeeData.data });
-	    });
-
-	    coffeeService.on('created', function (coffee) {
-	      return _this.setState({
-	        coffees: _this.state.coffees.concat(coffee)
-	      });
+	    var orderService = api.service('orders');
+	    // coffeeService.find().then(coffeeData => this.setState({ coffees: coffeeData.data }));
+	    //
+	    // coffeeService.on('created', coffee => this.setState({
+	    //   coffees: this.state.coffees.concat(coffee)
+	    // }));
+	    orderService.find({
+	      query: { order_id: 1 }
+	    }).then(function (orders) {
+	      console.log(orders);
 	    });
 	  },
 	  render: function render() {

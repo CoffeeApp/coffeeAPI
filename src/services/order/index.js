@@ -9,9 +9,23 @@ class Service {
     this.options = options || {};
   }
   find(params) {
+    var query =  params.query;
     const promise = new Promise(function(resolve, reject) {
       knex('order')
       .join('shop', 'shop.id', 'order.shop_id')
+      .where(function() {
+        if(query) {
+          if(query.shop_id) {
+            if(query.order_id) {
+              this.where('shop.id', query.shop_id).andWhere('order.id', query.order_id)
+            } else {
+              this.where('shop.id', query.shop_id)
+            }
+          } else if(query.order_id) {
+            this.where('order.id', query.order_id)
+          }
+        }
+      })
       .select(
         'order.id as order_id',
         'shop.name as shop_id',
@@ -121,14 +135,25 @@ class Service {
   // }
   //
   patch(id, data, params) {
-    return new Promise(function(resolve, reject) {
-      knex('order')
+    console.log('patching orderid: data', id, data);
+    return knex('order')
         .update(data)
         .where('id', id)
         .then((id) => {
-          resolve(`order id ${id} is patched`)
+
+            return this.find({query: {order_id: id}})
+
         })
-    })
+
+  }
+  patchs(id, data, params) {
+    knex('order')
+      .update(data)
+      .where('id', id)
+      .then((id) => {
+
+      })
+    return
   }
   //
   // remove(id, params) {
