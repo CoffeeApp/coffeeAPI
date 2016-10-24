@@ -10,9 +10,9 @@ module.exports = [
             description: 'A type of coffee made with espresso and hot steamed milk, but without the froth characteristic of a cappuccino.'
         },
         {
-            type: 'Cold Press',
+            type: 'Long Black',
             image: 'https://s-media-cache-ak0.pinimg.com/564x/99/94/fe/9994fedb8db160d363719f2acb74acb4.jpg',
-            description: 'Cold brew, or cold press, is coffee grounds steeped in water at cold or room temperature for an extended period.'
+            description: ' A double-shot of espresso or ristretto over hot water.'
         },
         {
             type: 'Macchiato',
@@ -29,4 +29,24 @@ module.exports = [
             image: 'https://s-media-cache-ak0.pinimg.com/564x/99/94/fe/9994fedb8db160d363719f2acb74acb4.jpg',
             description: 'Single shot poured over heaped teaspoon of hot chocolate powder and stirred. Top with velvety milk in a cappuccino style.'
         },
+        {
+            type: 'Americano',
+            image: 'https://s-media-cache-ak0.pinimg.com/564x/99/94/fe/9994fedb8db160d363719f2acb74acb4.jpg',
+            description: ''
+        },
+        {
+            type: 'Cappuccino',
+            image: 'https://s-media-cache-ak0.pinimg.com/564x/99/94/fe/9994fedb8db160d363719f2acb74acb4.jpg',
+            description: 'Espresso with a little bit of steamed milk topped with a lot of foam'
+        },
+        {
+            type: 'Espresso',
+            image: 'https://s-media-cache-ak0.pinimg.com/564x/99/94/fe/9994fedb8db160d363719f2acb74acb4.jpg',
+            description: 'Coffee brewed by forcing a small amount of nearly boiling water under pressure through finely ground beans.'
+        },
+        {
+            type: 'Latte',
+            image: 'https://s-media-cache-ak0.pinimg.com/564x/99/94/fe/9994fedb8db160d363719f2acb74acb4.jpg',
+            description: 'Espresso with steamed milk and little to no foam'
+        }
     ]
