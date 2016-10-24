@@ -132,6 +132,7 @@ class Service {
                       shop.coffeesNotAvailable = coffeesNotAvailable.map(c => c.coffee_id)
                     }
                     shop.order_id = orderId
+                    shop.status = ""
                     rsl(shop)
                   })
               })
