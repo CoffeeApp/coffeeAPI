@@ -156,12 +156,9 @@ class Service {
   //
   patch(id, data, params) {
     console.log('patching orderid: data', id, data);
-    if(data.action = 'submitted') {
-      data.payload.status = 'received'
-    }
     return new Promise((resolve, reject) => {
       knex('order')
-          .update(data.payload)
+          .update(data)
           .where('id', id)
           .then((updated) => {
               console.log('patched: ', id);
