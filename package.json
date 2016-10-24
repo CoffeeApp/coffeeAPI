@@ -22,8 +22,8 @@
     "dev": "nodemon src/",
     "build": "webpack --watch",
     "mocha": "mocha test/ --recursive",
-    "localm": "knex migrate:rollback && knex migrate:latest && knex seed:run",
-    "herokum": "heroku run knex migrate:rollback && heroku run knex migrate:latest && heroku run knex seed:run"
+    "lm": "knex migrate:rollback && knex migrate:latest && knex seed:run",
+    "hm": "heroku run knex migrate:rollback && heroku run knex migrate:latest && heroku run knex seed:run"
   },
   "dependencies": {
     "body-parser": "^1.15.2",

@@ -79,6 +79,7 @@ class Service {
           var promiseArray = data.orderCoffees.map(coffeeOrder => {
             coffeeOrder.order_id = newOrderId[0]
             delete coffeeOrder['type']
+            delete coffeeOrder['id']
             return knex('order_detail')
               .insert(coffeeOrder)
           })
