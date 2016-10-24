@@ -164,7 +164,7 @@ class Service {
               console.log('patched: ', id);
               return this.find({query: {order_id: id}})
                 .then(order => {
-                  resolve({action: data.action, order:order })
+                  resolve({order:order })
                 })
           })
     })
