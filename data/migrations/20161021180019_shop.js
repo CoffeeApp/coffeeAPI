@@ -8,7 +8,7 @@ exports.up = function(knex, Promise) {
     table.string('phone')
     table.string('website')
     table.string('beans')
-    table.integer('rating')
+    table.float('rating')
     table.string('lat')
     table.string('lng')
     table.string('description')
