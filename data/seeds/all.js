@@ -14,13 +14,21 @@ exports.seed = function(knex, Promise) {
     knex('shop').del()
   ]).then(() => {
     return knex('coffee')
-      .insert(coffees)
+      .insert(coffee)
       .then(() => {
-        return knex('shop_coffee')
-          .insert(shop_coffees)
+        return knex('shop')
+          .insert(shop)
           .then(() => {
-            return knex('order_detail')
-              .insert(order_details)
+            return knex('shop_coffee')
+              .insert(shop_coffee)
+              .then(() => {
+                return knex('order')
+                  .insert(order)
+                  .then(() => {
+                    return knex('order_detail')
+                      .insert(order_detail)
+                  })
+              })
           })
       })
   })
