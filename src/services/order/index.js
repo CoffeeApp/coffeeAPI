@@ -51,7 +51,7 @@ class Service {
               knex('order_detail')
                 .join('coffee', 'order_detail.coffee_id', 'coffee.id')
                 .andWhere('order_detail.order_id', order.order_id)
-                .select('type', 'quantity as qty', 'milk', 'sugar', 'note')
+                .select('type', 'quantity', 'milk', 'sugar', 'note')
                 .then(coffees => {
                   order.coffees = coffees
                   rsv(order)
@@ -102,7 +102,7 @@ class Service {
           return c.coffee_id
         })
         knex('shop')
-          .select('id as shop_id', 'name as shop_name', 'address',
+          .select('id as shop_id', 'name as shop_name', 'image', 'website', 'address',
           'phone as shop_phone', 'rating', 'lat', 'lng', 'description')
           .then(shops => {
             // console.log('shops', shops);
@@ -113,14 +113,24 @@ class Service {
                   .andWhere('shop_id', shop.shop_id)
                   .select()
                   .then(prices => {
-                    // console.log(`prices of ${shop.shop_name}`, prices);
-                    var total = orderData.orderCoffees.reduce((sumPrice, c) => {
-                      var priceOfCoffee = prices.filter(p => {
-                        return p.coffee_id == c.coffee_id
-                      })[0]['price']
-                      return (sumPrice + (c.quantity * priceOfCoffee))
-                    }, 0)
-                    shop.total = total
+                    console.log(`prices of ${shop.shop_name}`, prices);
+                    if(prices.length >= orderData.orderCoffees.length) {
+                      var total = orderData.orderCoffees.reduce((sumPrice, c) => {
+                        var priceOfCoffee = prices.filter(p => {
+                          return p.coffee_id == c.coffee_id
+                        })[0]['price']
+                        return (sumPrice + (c.quantity * priceOfCoffee))
+                      }, 0)
+                      shop.total = total
+                    } else {
+                      var coffeesNotAvailable = orderData.orderCoffees.filter((orderCoffee) => {
+                        var isAvailable = prices.reduce((hasPriceInfo, price) => {
+                          return hasPriceInfo || price.coffee_id == orderCoffee.coffee_id
+                        }, false)
+                        return !isAvailable
+                      })
+                      shop.coffeesNotAvailable = coffeesNotAvailable.map(c => c.coffee_id)
+                    }
                     shop.order_id = orderId
                     rsl(shop)
                   })
@@ -129,7 +139,10 @@ class Service {
 
             return Promise.all(shopWithTotalPromiseArray)
 
-          }).then(shopsWithTotal => {
+          }).then(shopsMayHaveNoTotal => {
+            var shopsWithTotal = shopsMayHaveNoTotal.filter(shop => {
+              return !(_.isNil(shop.total))
+            })
             resolve(shopsWithTotal)
           })
       })
@@ -143,14 +156,18 @@ class Service {
   //
   patch(id, data, params) {
     console.log('patching orderid: data', id, data);
-    return knex('order')
-        .update(data)
-        .where('id', id)
-        .then((updated) => {
-            console.log('patched: ', id);
-            return this.find({query: {order_id: id}})
-
-        })
+    return new Promise((resolve, reject) => {
+      knex('order')
+          .update(data)
+          .where('id', id)
+          .then((updated) => {
+              console.log('patched: ', id);
+              return this.find({query: {order_id: id}})
+                .then(order => {
+                  resolve({order:order })
+                })
+          })
+    })
 
   }
   patchs(id, data, params) {
