@@ -76,7 +76,9 @@ class Service {
     var promise = new Promise(function(resolve, reject) {
       knex('order')
         .insert(data.details)
+        .returning('id')
         .then(newOrderId => {
+          console.log('newOrderId after create order: ', newOrderId);
           var promiseArray = data.orderCoffees.map(coffeeOrder => {
             coffeeOrder.order_id = newOrderId[0]
             delete coffeeOrder['type']
@@ -84,7 +86,6 @@ class Service {
             return knex('order_detail')
               .insert(coffeeOrder)
           })
-          console.log('newOrderId after create order: ', newOrderId);
           return Promise.all(promiseArray)
             .then(batchAdds => {
               resolve({
