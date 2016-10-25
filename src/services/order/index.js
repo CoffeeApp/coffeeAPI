@@ -144,6 +144,7 @@ class Service {
             var shopsWithTotal = shopsMayHaveNoTotal.filter(shop => {
               return !(_.isNil(shop.total))
             })
+            console.log(shopsWithTotal);
             resolve(shopsWithTotal)
           })
       })
