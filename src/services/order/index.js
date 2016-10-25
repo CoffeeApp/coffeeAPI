@@ -20,6 +20,11 @@ class Service {
         }
       })
       .andWhere(function() {
+        if(query && query.phone) {
+          this.where('order.phone', query.phone)
+        }
+      })
+      .andWhere(function() {
         if(query) {
           if(query.shop_id) {
             if(query.order_id) {
