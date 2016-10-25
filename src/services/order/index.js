@@ -84,7 +84,7 @@ class Service {
             return knex('order_detail')
               .insert(coffeeOrder)
           })
-
+          console.log('newOrderId after create order: ', newOrderId);
           return Promise.all(promiseArray)
             .then(batchAdds => {
               resolve({
@@ -97,6 +97,7 @@ class Service {
 
     var resultPromise = new Promise(function(resolve, reject) {
       promise.then(data => {
+        console.log('data passed to shops quotes: ', data);
         var orderId = data.newOrderId
         var orderData = data.orderData
         var coffeeIds = orderData.orderCoffees.map(c => {
@@ -145,7 +146,7 @@ class Service {
             var shopsWithTotal = shopsMayHaveNoTotal.filter(shop => {
               return !(_.isNil(shop.total))
             })
-            console.log(shopsWithTotal);
+            console.log(shopsWithTotal[0]);
             resolve(shopsWithTotal)
           })
       })
