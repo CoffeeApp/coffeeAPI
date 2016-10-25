@@ -40,6 +40,7 @@ class Service {
         'order.phone',
         'status',
         'comment',
+        'ready_time',
         'new_date as ordered'
       )
       .then(orders => {

@@ -5,6 +5,7 @@ module.exports = [
     status: 'received',
     shop_id: 1,
     comment: 'on time',
+    ready_time: 'ASAP',
     new_date: new Date()
   },
   {
@@ -13,6 +14,7 @@ module.exports = [
     status: 'received',
     shop_id: 1,
     comment: 'no sugar, no milk',
+    ready_time: '15 minutes',
     new_date: new Date()
   },
   {
@@ -21,6 +23,7 @@ module.exports = [
     status: 'received',
     shop_id: 2,
     comment: 'a lot of sugar',
+    ready_time: '30 minutes',
     new_date: new Date()
   },
   {
@@ -29,6 +32,7 @@ module.exports = [
     status: 'received',
     shop_id: 2,
     comment: 'no coffee beans',
+    ready_time: '1 hour',
     new_date: new Date()
   }
 ]

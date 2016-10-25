@@ -5,6 +5,7 @@ exports.up = function(knex, Promise) {
     table.string('name')
     table.string('phone')
     table.string('status')
+    table.string('ready_time')
     table.string('comment')
     table.integer('shop_id').references('shop.id')
     table.date('new_date')
