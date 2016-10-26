@@ -3,76 +3,26 @@
 const service = require('feathers-knex');
 const hooks = require('./hooks');
 const knex = require('../../../data/index')
+const orderHelper = require('../../../data/helper/order')
 const _ = require('lodash')
 class Service {
   constructor(options) {
     this.options = options || {};
   }
+
   find(params) {
     var query =  params.query;
-    console.log('query: ', query);
-    const promise = new Promise(function(resolve, reject) {
-      knex('order')
-      .join('shop', 'shop.id', 'order.shop_id')
-      .where(function() {
-        if(query && query.notIn == 'new') {
-          this.whereNot('order.status', query.notIn)
-        }
-      })
-      .andWhere(function() {
-        if(query && query.phone) {
-          this.where('order.phone', query.phone)
-        }
-      })
-      .andWhere(function() {
-        if(query) {
-          if(query.shop_id) {
-            if(query.order_id) {
-              this.where('shop.id', query.shop_id).andWhere('order.id', query.order_id)
-            } else {
-              this.where('shop.id', query.shop_id)
-            }
-          } else if(query.order_id) {
-            this.where('order.id', query.order_id)
-          }
-        }
-      })
-      .select(
-        'order.id as order_id',
-        'shop.id as shop_id',
-        'shop.name as shop_name',
-        'order.name',
-        'order.phone',
-        'status',
-        'comment',
-        'ready_time',
-        'new_date as ordered'
-      )
+
+    console.log('refactored query: ', query);
+
+    return orderHelper.findOrder(query)
       .then(orders => {
         if(_.isEmpty(orders)) {
-          resolve([])
+          return []
         } else {
-          var promiseArray = _.map(orders, (order) => {
-            return new Promise((rsv, rej) => {
-              knex('order_detail')
-                .join('coffee', 'order_detail.coffee_id', 'coffee.id')
-                .andWhere('order_detail.order_id', order.order_id)
-                .select('type', 'quantity', 'milk', 'sugar', 'note')
-                .then(coffees => {
-                  order.coffees = coffees
-                  rsv(order)
-                })
-            })
-          })
-          Promise.all(promiseArray)
-            .then((resultOrders) => {
-              resolve(resultOrders)
-            })
+          return orderHelper.getOrderDetails(orders)
         }
       })
-
-    })
-    return promise
   }
 
   create(data, params) {
