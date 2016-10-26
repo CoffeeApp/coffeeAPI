@@ -15,6 +15,10 @@ module.exports = {
     connection: {
       filename: PATHS.development
     },
+    pool: {
+      min: 6,
+      max: 10
+    },
     migrations: {
       directory: PATHS.migrations,
       tableName: 'knex_migrations'
@@ -45,7 +49,7 @@ module.exports = {
     client: 'pg',
     connection: process.env.DATABASE_URL,
     pool: {
-      min: 2,
+      min: 8,
       max: 10
     },
     migrations: {
