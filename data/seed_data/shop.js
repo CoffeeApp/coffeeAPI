@@ -111,7 +111,7 @@ module.exports = [
       lat: '-41.314147',
       lng: '174.7793267',
       phone: '04 389 6776',
-      address: '12 Constable Street, Newtown, Wellington',
+      address: '12 Constable Street, Newtown, Wellington, 6021',
       website: 'http://peoplescoffee.co.nz/contact/#our-flagship-cafe',
       beans: "Peoples Coffee",
       rating: 4,
