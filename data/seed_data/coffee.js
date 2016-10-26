@@ -32,7 +32,7 @@ module.exports = [
   {
     type: 'Americano',
     image: 'https://s3-ap-southeast-2.amazonaws.com/kokako-coffee/coffees/americano.png',
-    description: ''
+    description: 'A shot or two of espresso with hot water added'
   },
   {
     type: 'Cappuccino',

@@ -15,8 +15,8 @@ class Service {
       knex('order')
       .join('shop', 'shop.id', 'order.shop_id')
       .where(function() {
-        if(query && query.notIn == 'new') {
-          this.whereNot('order.status', query.notIn)
+        if(query && query.notIn) {
+          this.whereNotIn('order.status', query.notIn)
         }
       })
       .andWhere(function() {
