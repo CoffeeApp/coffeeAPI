@@ -8,7 +8,7 @@ module.exports = [
     website: 'http://www.fidelscafe.com/',
     beans: 'Beans A',
     rating: 4,
-    image: 'https://trademe.tmcdn.co.nz/photoserver/social/facebook/full/511866769.jpg',
+    image: 'https://s3-ap-southeast-2.amazonaws.com/kokako-coffee/shops/fidels.svg',
     description: 'Brothers & sisters of the revolution! Welcome to Fidel’s. Where the coffee is Cuban and the hospitality is pure New Zealand.'},
     {
       name: 'Raglan Roast',
@@ -19,7 +19,7 @@ module.exports = [
       website: 'https://www.raglanroast.co.nz/',
       beans: 'Raglan Roast',
       rating: 3.5,
-      image: 'http://main-cdn.grabone.co.nz/goimage/440x267/ixplxb4.jpg',
+      image: 'https://s3-ap-southeast-2.amazonaws.com/kokako-coffee/shops/raglan.jpg',
       description: 'Raglan Roast coffee is roasted daily at our "Hole in the Wall" coffee shop located in Volcom Lane and at the Te Uku Roast Office, Raglan New Zealand.'
     },
     {
@@ -31,7 +31,7 @@ module.exports = [
       website: 'http://www.pre-fab.co.nz/',
       beans: 'Acme & Co',
       rating: 4.5,
-      image: 'https://pbs.twimg.com/profile_images/3501080620/174c916cdb3c58a96958b9897dad96d4.jpeg',
+      image: 'https://s3-ap-southeast-2.amazonaws.com/kokako-coffee/shops/prefab.jpeg',
       description: 'Coffee, roasted on site, served as espresso and bottomless filter from 7am!'
     },
     {
@@ -43,7 +43,7 @@ module.exports = [
       website: 'https://www.coffeesupreme.com/',
       beans: 'Supreme Coffee',
       rating: 4.8,
-      image: 'https://www.coffeesupreme.com/images/misc/supreme_logo_website.gif',
+      image: 'https://s3-ap-southeast-2.amazonaws.com/kokako-coffee/shops/supreme.gif',
       description: 'Customs coffee menu has both espresso and filter offerings. Whilst stocking fresh doughnuts daily it also boasts some of the finest toast in Wellington. '
     },
     {
@@ -55,7 +55,7 @@ module.exports = [
       website: 'https://www.thecross.co.nz',
       beans: 'Havana',
       rating: 4.0,
-      image: 'http://www.dineout.co.nz/assets/4777_Southern_Cross_Logo.jpg',
+      image: 'https://s3-ap-southeast-2.amazonaws.com/kokako-coffee/shops/southern-cross.jpg',
       description: 'Longtime, family-friendly spot with a leafy patio offering pub eats, drinks & diverse events.'
     },
     {
@@ -67,7 +67,7 @@ module.exports = [
       website: 'http://www.laffare.co.nz/',
       beans: "L'affare Primo",
       rating: 4.5,
-      image: 'https://media-cdn.tripadvisor.com/media/photo-s/05/6f/d4/0f/cafe-l-affare.jpg',
+      image: 'https://s3-ap-southeast-2.amazonaws.com/kokako-coffee/shops/laffare.jpeg',
       description: 'Single origins, blends, Fairtrade hot chocolate, espresso machines & brewing equipment.'
     },
     {
@@ -79,7 +79,7 @@ module.exports = [
       website: 'https://www.facebook.com/memphisbellecoffeehouse/',
       beans: "People's Coffee",
       rating: 3.4,
-      image: 'https://fanart.tv/fanart/movies/12651/hdmovielogo/afrikaioli-52cf17a2cb080.png',
+      image: 'https://s3-ap-southeast-2.amazonaws.com/kokako-coffee/shops/memphisbelle.png',
       description: 'Heaps, too much to write. Come in and see them, but more importantly drink our coffee and you give us your own award!'
     },
     {
@@ -91,7 +91,7 @@ module.exports = [
       website: 'https://www.facebook.com/Lamason-Brew-Bar-267527119927052/about/?ref=page_internal',
       beans: "Peoples Coffee",
       rating: 4.5,
-      image: 'http://main-cdn.grabone.co.nz/goimage/440x267/ixp29f.jpg',
+      image: 'https://s3-ap-southeast-2.amazonaws.com/kokako-coffee/shops/lamason.jpg',
       description: 'We are a Siphon & Espresso Brew Bar that is dedicated to top-shelf espresso and beautifully crafted single origin, non-pressurized coffee.'
     },
     {
@@ -103,7 +103,7 @@ module.exports = [
       website: 'http://flightcoffee.co.nz/',
       beans: "Flight Coffee",
       rating: 4.5,
-      image: 'http://65.media.tumblr.com/90da49a30729e0baf150da107f627e74/tumblr_odq9edPU8S1uo0uyoo1_1280.jpg',
+      image: 'https://s3-ap-southeast-2.amazonaws.com/kokako-coffee/shops/hanger.jpg',
       description: 'Specialty coffee cafe in the heart of Wellington city.'
     },
     {
@@ -115,7 +115,7 @@ module.exports = [
       website: 'http://peoplescoffee.co.nz/contact/#our-flagship-cafe',
       beans: "Peoples Coffee",
       rating: 4,
-      image: 'http://peoplescoffee.co.nz/wp-content/themes/peoplescoffee/img/logo.svg',
+      image: 'https://s3-ap-southeast-2.amazonaws.com/kokako-coffee/shops/peoples.svg',
       description: 'We differ to other roasteries in Aotearoa in that our entire range of coffee is certified fair trade organic coffee.'
     }
   ]
