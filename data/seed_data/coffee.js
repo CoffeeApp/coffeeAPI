@@ -32,7 +32,7 @@ module.exports = [
   {
     type: 'Americano',
     image: 'https://s-media-cache-ak0.pinimg.com/564x/99/94/fe/9994fedb8db160d363719f2acb74acb4.jpg',
-    description: ''
+    description: 'A shot or two of espresso with hot water added'
   },
   {
     type: 'Cappuccino',
