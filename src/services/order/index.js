@@ -4,6 +4,8 @@ const service = require('feathers-knex');
 const hooks = require('./hooks');
 const knex = require('../../../data/index')
 const _ = require('lodash')
+const moment = require('moment')
+
 class Service {
   constructor(options) {
     this.options = options || {};
@@ -78,6 +80,7 @@ class Service {
   create(data, params) {
     console.log('data', data);
     data.details.new_date = new Date()
+    console.log('ordered date', moment(data.details.new_date).format('h:mm a, MMMM Do YYYY'));
     var promise = new Promise(function(resolve, reject) {
       knex('order')
         .insert(data.details)
