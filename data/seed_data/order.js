@@ -5,6 +5,7 @@ module.exports = [
     status: 'WAITING...',
     shop_id: 1,
     comment: '',
+    ready_time: 'ASAP',
     new_date: new Date()
   },
   {
@@ -13,6 +14,7 @@ module.exports = [
     status: 'WAITING...',
     shop_id: 2,
     comment: '',
+    ready_time: 'in 15 minutes',
     new_date: new Date()
   },
   {
@@ -21,6 +23,7 @@ module.exports = [
     status: 'WAITING...',
     shop_id: 3,
     comment: 'Collect at 3pm',
+    ready_time: 'in 30 minutes',
     new_date: new Date()
   },
   {
@@ -29,6 +32,7 @@ module.exports = [
     status: 'WAITING...',
     shop_id: 4,
     comment: 'Deliver to next door please ;-)',
+    ready_time: 'in 30 minutes',
     new_date: new Date()
   },
   {
@@ -37,6 +41,7 @@ module.exports = [
     status: 'WAITING...',
     shop_id: 5,
     comment: '',
+    ready_time: 'ASAP',
     new_date: new Date()
   },
   {
@@ -45,6 +50,7 @@ module.exports = [
     status: 'WAITING...',
     shop_id: 6,
     comment: '',
+    ready_time: 'in 15 minutes',
     new_date: new Date()
   },
   {
@@ -53,6 +59,7 @@ module.exports = [
     status: 'WAITING...',
     shop_id: 7,
     comment: '',
+    ready_time: 'ASAP',
     new_date: new Date()
   },
   {
@@ -61,6 +68,7 @@ module.exports = [
     status: 'WAITING...',
     shop_id: 8,
     comment: '',
+    ready_time: 'in 1 hour',
     new_date: new Date()
   },
   {
@@ -69,6 +77,7 @@ module.exports = [
     status: 'WAITING...',
     shop_id: 9,
     comment: '',
+    ready_time: 'in 15 minutes',
     new_date: new Date()
   },
   {
@@ -77,6 +86,7 @@ module.exports = [
     status: 'WAITING...',
     shop_id: 10,
     comment: '',
+    ready_time: 'ASAP',
     new_date: new Date()
   },
   {
@@ -85,6 +95,7 @@ module.exports = [
     status: 'WAITING...',
     shop_id: 1,
     comment: '',
+    ready_time: 'ASAP',
     new_date: new Date()
   },
   {
@@ -93,6 +104,7 @@ module.exports = [
     status: 'WAITING...',
     shop_id: 2,
     comment: '',
+    ready_time: 'in 30 minutes',
     new_date: new Date()
   },
   {
@@ -101,6 +113,7 @@ module.exports = [
     status: 'WAITING...',
     shop_id: 3,
     comment: '',
+    ready_time: 'ASAP',
     new_date: new Date()
   },
   {
@@ -109,6 +122,7 @@ module.exports = [
     status: 'WAITING...',
     shop_id: 4,
     comment: '',
+    ready_time: 'in 15 minutes',
     new_date: new Date()
   },
   {
@@ -117,6 +131,7 @@ module.exports = [
     status: 'WAITING...',
     shop_id: 5,
     comment: '',
+    ready_time: 'ASAP',
     new_date: new Date()
   },
   {
@@ -125,6 +140,7 @@ module.exports = [
     status: 'WAITING...',
     shop_id: 6,
     comment: '',
+    ready_time: 'in 30 minutes',
     new_date: new Date()
   },
   {
@@ -133,6 +149,7 @@ module.exports = [
     status: 'WAITING...',
     shop_id: 7,
     comment: '',
+    ready_time: 'ASAP',
     new_date: new Date()
   },
   {
@@ -141,6 +158,7 @@ module.exports = [
     status: 'WAITING...',
     shop_id: 8,
     comment: '',
+    ready_time: 'ASAP',
     new_date: new Date()
   },
   {
@@ -149,6 +167,7 @@ module.exports = [
     status: 'WAITING...',
     shop_id: 9,
     comment: '',
+    ready_time: 'in 30 minutes',
     new_date: new Date()
   },
   {
@@ -157,6 +176,7 @@ module.exports = [
     status: 'WAITING...',
     shop_id: 10,
     comment: '',
+    ready_time: 'in 15 minutes',
     new_date: new Date()
   },
   {
@@ -165,6 +185,7 @@ module.exports = [
     status: 'WAITING...',
     shop_id: 1,
     comment: '',
+    ready_time: 'ASAP',
     new_date: new Date()
   }
 ]

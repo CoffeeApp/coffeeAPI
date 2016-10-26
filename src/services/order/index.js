@@ -15,8 +15,13 @@ class Service {
       knex('order')
       .join('shop', 'shop.id', 'order.shop_id')
       .where(function() {
-        if(query && query.notIn == 'new') {
-          this.whereNot('order.status', query.notIn)
+        if(query && query.notIn) {
+          this.whereNotIn('order.status', query.notIn)
+        }
+      })
+      .andWhere(function() {
+        if(query && query.phone) {
+          this.where('order.phone', query.phone)
         }
       })
       .andWhere(function() {
@@ -40,6 +45,7 @@ class Service {
         'order.phone',
         'status',
         'comment',
+        'ready_time',
         'new_date as ordered'
       )
       .then(orders => {
@@ -75,7 +81,9 @@ class Service {
     var promise = new Promise(function(resolve, reject) {
       knex('order')
         .insert(data.details)
+        .returning('id')
         .then(newOrderId => {
+          console.log('newOrderId after create order: ', newOrderId);
           var promiseArray = data.orderCoffees.map(coffeeOrder => {
             coffeeOrder.order_id = newOrderId[0]
             delete coffeeOrder['type']
@@ -83,7 +91,6 @@ class Service {
             return knex('order_detail')
               .insert(coffeeOrder)
           })
-
           return Promise.all(promiseArray)
             .then(batchAdds => {
               resolve({
@@ -96,6 +103,7 @@ class Service {
 
     var resultPromise = new Promise(function(resolve, reject) {
       promise.then(data => {
+        console.log('data passed to shops quotes: ', data);
         var orderId = data.newOrderId
         var orderData = data.orderData
         var coffeeIds = orderData.orderCoffees.map(c => {
@@ -144,6 +152,7 @@ class Service {
             var shopsWithTotal = shopsMayHaveNoTotal.filter(shop => {
               return !(_.isNil(shop.total))
             })
+            console.log(shopsWithTotal[0]);
             resolve(shopsWithTotal)
           })
       })
