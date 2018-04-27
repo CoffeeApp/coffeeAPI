@@ -10,9 +10,16 @@ class Service {
   constructor(options) {
     this.options = options || {};
   }
+
+  /**
+   * find() returns a Promise with payload of coffee orders
+   * based on the passed-in query object {status, phoneNumber [, shop_id [, order_id]]}
+   */
   find(params) {
     var query =  params.query;
     console.log('query: ', query);
+
+    // the promise which will be return
     const promise = new Promise(function(resolve, reject) {
       knex('order')
       .join('shop', 'shop.id', 'order.shop_id')
@@ -50,10 +57,14 @@ class Service {
         'ready_time',
         'new_date as ordered'
       )
+
+      // orders are fetched from DB and passed-in when calling knex.select.then()
       .then(orders => {
         if(_.isEmpty(orders)) {
           resolve([])
         } else {
+
+          // for each order, get order detail from DB and wrapping in Promise object
           var promiseArray = _.map(orders, (order) => {
             return new Promise((rsv, rej) => {
               knex('order_detail')
@@ -66,6 +77,8 @@ class Service {
                 })
             })
           })
+
+          // Using promise.all to synchronise all the orders' asynchronous DB operations
           Promise.all(promiseArray)
             .then((resultOrders) => {
               resolve(resultOrders)
